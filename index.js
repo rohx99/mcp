@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import sequelize from "./config/db.js";
 import userRoutes from "./routes/user.routes.js";
+import leadRoutes from "./routes/lead.routes.js";
 import { mcp_init } from "./mcp/index.js";
 
 const app = express();
@@ -10,6 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/users", userRoutes);
+app.use("/leads", leadRoutes);
 
 app.use((err, req, res, next) => {
   console.error("Unhandled error:", err);
